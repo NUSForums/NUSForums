@@ -1,4 +1,3 @@
-
 export type AcadYear = string; // E.g. "2016/2017"
 export type ClassNo = string; // E.g. "1", "A"
 export type DayText = string; // E.g. "Monday", "Tuesday"
@@ -32,23 +31,9 @@ export type Weeks = number[] | WeekRange;
 export type PrereqTree = string | { and?: PrereqTree[]; or?: PrereqTree[] };
 
 // Auxiliary data types
-export type Day =
-  | 'Monday'
-  | 'Tuesday'
-  | 'Wednesday'
-  | 'Thursday'
-  | 'Friday'
-  | 'Saturday'
-  | 'Sunday';
+export type Day = 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday';
 
-export const WorkingDaysOfWeek: Day[] = [
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-];
+export const WorkingDaysOfWeek: Day[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 export const DaysOfWeek: Day[] = [...WorkingDaysOfWeek, 'Sunday'];
 

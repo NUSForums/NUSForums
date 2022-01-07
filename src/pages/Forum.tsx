@@ -49,7 +49,7 @@ const Forum = () => {
               return (
                 <button
                   onClick={() => {
-                    console.log(mod.moduleCode)
+                    console.log(mod.moduleCode);
                     navigate(`/forum/${mod.moduleCode}`);
                     dispatch({ type: 'CLEAR_SEARCH' });
                   }}
