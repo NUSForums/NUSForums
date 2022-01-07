@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { auth, db } from './config/firebase.js';
+import { auth, db } from './config/firebase';
 import 'firebase/firestore';
-import { UserContext, UserState } from './contexts/userContext.js';
-import HelloPage from './pages/hello.js';
+import { UserContext, UserState } from './contexts/userContext';
+import HelloPage from './pages/hello';
 import { doc, getDoc } from 'firebase/firestore';
 
 const MainRouter = () => {
