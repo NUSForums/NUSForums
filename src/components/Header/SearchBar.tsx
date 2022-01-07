@@ -36,7 +36,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ className }) => {
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
         placeholder="Search for modules"
-        className="w-full ml-2 text-base bg-transparent focus:outline-none"
+        className="w-full ml-2 text-sm bg-transparent focus:outline-none"
       />
     </div>
   );

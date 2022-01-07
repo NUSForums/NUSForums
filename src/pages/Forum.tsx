@@ -33,10 +33,6 @@ const Forum = () => {
     }
   }, [searchValue, mods, semester]);
 
-  useEffect(() => {
-    console.log(searchValue);
-  }, [searchValue]);
-
   return (
     <div className="flex">
       <Sidebar />

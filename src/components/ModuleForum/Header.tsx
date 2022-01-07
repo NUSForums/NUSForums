@@ -19,8 +19,8 @@ const Header = () => {
   };
 
   return (
-    <div className="px-5 pt-5">
-      <div className="font-poppins font-extrabold text-forum-title text-2xl ml-1">
+    <div className="pt-5">
+      <div className="ml-1 text-2xl font-extrabold font-poppins text-forum-title">
         CS3230 - Software Engineering Project
       </div>
       <div className="flex items-center justify-between">
@@ -31,7 +31,7 @@ const Header = () => {
         </div>
         <div className="flex items-center">
           <Dropdown />
-          <IoTrash size={20} className="text-forum-title cursor-pointer" onClick={clearFilter} />
+          <IoTrash size={20} className="cursor-pointer text-forum-title" onClick={clearFilter} />
         </div>
       </div>
     </div>

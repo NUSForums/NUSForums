@@ -42,6 +42,7 @@ module.exports = {
         sidebarText: '#C4CBD1',
         postCard: '#FCFCFC',
         subText: '#787E8B',
+        grayText: '#69707A',
       },
     },
     spacing: {

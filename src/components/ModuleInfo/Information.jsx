@@ -8,10 +8,10 @@ const Information = ({ content }) => {
       <ShowMoreText
         /* Default options */
         lines={5}
-        more={<p className="font-semibold text-gray-700">Show more</p>}
-        less={<p className="font-bold text-gray-700">Show less</p>}
+        more={<p className="text-sm font-semibold text-gray-700 underline">Show more</p>}
+        less={<p className="text-sm font-semibold text-gray-700 underline">Show less</p>}
         keepNewLines={false}
-        className="mt-2 text-base"
+        className="mt-2 text-sm "
         truncatedEndingComponent={'... '}
       >
         {content}

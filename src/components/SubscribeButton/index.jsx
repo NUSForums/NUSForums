@@ -12,13 +12,13 @@ const SubscribeButton = ({ moduleCode }) => {
 
   if (pins.includes(moduleCode)) {
     return (
-      <div className="py-3 w-full text-center font-bold text-forum-subText bg-white rounded-lg text-lg">Subscribed</div>
+      <div className="w-full py-3 text-lg font-bold text-center bg-white rounded-lg text-forum-subText">Subscribed</div>
     );
   }
 
   return (
     <button
-      className="py-3 w-full text-center font-bold text-forum-title bg-white rounded-lg text-lg"
+      className="w-full py-3 text-lg font-bold text-center bg-white rounded-lg shadow-post text-forum-title"
       onClick={onClick}
     >
       Subscribe

@@ -8,7 +8,7 @@ import Exam from './Exam';
 import Information from './Information';
 
 type Props = {
-  moduleCode?: String;
+  moduleCode?: string;
 };
 
 const defaultData: NUSModules = {
@@ -466,7 +466,7 @@ const ModuleInfo = ({ moduleCode }: Props) => {
   }, [acadYear, moduleCode]);
 
   return (
-    <div className="px-5 my-4 py-2 bg-white rounded-lg">
+    <div className="px-5 py-2 bg-white rounded-lg shadow-post">
       <Information content={moduleInfo?.description} />
       <Item heading="Prerequisite" content={moduleInfo?.prerequisite} />
       <Item heading="Preclusion" content={moduleInfo?.preclusion} />

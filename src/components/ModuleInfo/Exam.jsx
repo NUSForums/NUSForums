@@ -23,11 +23,11 @@ const Exam = ({ date }) => {
 
   return (
     <>
-      <div className="flex font-semibold text-forum-title">
+      <div className="flex text-base font-semibold text-forum-title">
         <p className="mr-1">Exam</p>
         {dateFromExam > 0 && <p>{`(in ${dateFromExam} days)`}</p>}
       </div>
-      <p>{dateDisplay}</p>
+      <p className="text-sm">{dateDisplay}</p>
     </>
   );
 };
