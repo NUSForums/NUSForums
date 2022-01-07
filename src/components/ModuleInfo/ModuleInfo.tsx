@@ -449,11 +449,15 @@ const defaultData: NUSModules = {
   ],
 };
 
+// TODO @Keane Remove later
+const canFetch: boolean = false;
+
 const ModuleInfo = ({ moduleCode }: Props) => {
   const acadYear = useAppSelector((state) => state.metadata.acadYear);
+  const semester = useAppSelector((state) => state.metadata.semester);
 
   const [moduleInfo, setModuleInfo] = useState<NUSModules>(defaultData);
-  const canFetch: boolean = false;
+  const examDate = moduleInfo?.semesterData[parseInt(semester) - 1]?.examDate;
 
   useEffect(() => {
     if (canFetch) {
@@ -468,7 +472,7 @@ const ModuleInfo = ({ moduleCode }: Props) => {
       <h1>Module Information</h1>
       <Item heading="Prerequisite" section={moduleInfo?.prerequisite} />
       <Item heading="Preclusion" section={moduleInfo?.preclusion} />
-      {/* <Exam date={''} /> */}
+      {examDate && <Exam date={examDate} />}
     </div>
   );
 };
