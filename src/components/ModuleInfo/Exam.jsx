@@ -18,12 +18,21 @@ function getDateDisplay(date) {
 }
 
 const Exam = ({ date }) => {
-  const dateFromExam = date === undefined ? '' : getDateDiff(date);
+  if (date === undefined) {
+    return (
+      <>
+        <p className="flex pb-1 text-base font-semibold text-forum-title font-poppins">Exam</p>
+        <p className="text-sm">None</p>
+      </>
+    );
+  }
+
+  const dateFromExam = getDateDiff(date);
   const dateDisplay = getDateDisplay(date);
 
   return (
     <>
-      <div className="flex text-base font-semibold text-forum-title">
+      <div className="flex pb-1 text-base font-semibold text-forum-title font-poppins">
         <p className="mr-1">Exam</p>
         {dateFromExam > 0 && <p>{`(in ${dateFromExam} days)`}</p>}
       </div>

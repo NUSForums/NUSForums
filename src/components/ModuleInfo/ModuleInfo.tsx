@@ -470,7 +470,7 @@ const ModuleInfo = ({ moduleCode }: Props) => {
       <Information content={moduleInfo?.description} />
       <Item heading="Prerequisite" content={moduleInfo?.prerequisite} />
       <Item heading="Preclusion" content={moduleInfo?.preclusion} />
-      {examDate && <Exam date={examDate} />}
+      <Exam date={examDate} />
     </div>
   );
 };

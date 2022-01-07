@@ -18,7 +18,7 @@ const SubscribeButton = ({ moduleCode }) => {
   if (pins.includes(moduleCode)) {
     return (
       <button
-        className="w-full py-3 text-lg font-bold text-center bg-white rounded-lg shadow-post text-forum-subText"
+        className="w-full py-3 text-lg font-bold text-center bg-white rounded-lg shadow-post text-forum-subText font-poppins"
         onClick={onUnsubscribe}
       >
         Unsubscribe
@@ -28,7 +28,7 @@ const SubscribeButton = ({ moduleCode }) => {
 
   return (
     <button
-      className="w-full py-3 text-lg font-bold text-center bg-white rounded-lg shadow-post text-forum-title"
+      className="w-full py-3 text-lg font-bold text-center bg-white rounded-lg shadow-post text-forum-title font-poppins"
       onClick={onSubscribe}
     >
       Subscribe

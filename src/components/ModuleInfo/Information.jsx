@@ -4,7 +4,7 @@ import ShowMoreText from 'react-show-more-text';
 const Information = ({ content }) => {
   return (
     <div className="my-2">
-      <p className="text-lg font-bold text-forum-title">Module Information</p>
+      <p className="text-lg font-bold text-forum-title font-poppins">Module Information</p>
       <ShowMoreText
         /* Default options */
         lines={5}
