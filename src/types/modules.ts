@@ -71,7 +71,7 @@ export type RawLesson = Readonly<{
   venue: Venue;
   weeks: Weeks;
   size: number;
-  // covidZone: CovidZoneId;
+  covidZone: CovidZoneId;
 }>;
 
 // Semester-specific information of a module.
@@ -80,7 +80,7 @@ export type SemesterData = {
   timetable: RawLesson[];
 
   // Aggregated from timetable
-  // covidZones: CovidZoneId[];
+  covidZones: CovidZoneId[];
 
   // Exam
   examDate?: string;
@@ -171,3 +171,5 @@ export type ModuleInformation = Readonly<{
 export type Aliases = {
   [moduleCode: string]: ModuleCode[];
 };
+
+export type CovidZoneId = string;
