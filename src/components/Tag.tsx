@@ -6,7 +6,7 @@ interface TagProps {
 }
 
 // converts things like Mid Terms -> midTerms and General -> general
-function convert(name: string): string {
+export function tagConvert(name: string): string {
   return name.charAt(0).toLocaleLowerCase() + name.slice(1);
 }
 
@@ -34,7 +34,7 @@ const Tag = ({ name, button }: TagProps) => {
 
   return (
     <div
-      className={`py-1 bg-forum-${convert(
+      className={`py-1 bg-forum-${tagConvert(
         name
       )} w-24 grid place-items-center rounded-2xl text-white font-nunito text-sm tracking-wider mx-1 border-2 border-transparent  my-3 shadow-sm ${
         button ? 'cursor-pointer' : ''

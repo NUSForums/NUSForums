@@ -1,6 +1,6 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
-import RichTextEditor from './RichTextEditor.jsx';
+import RichTextEditor from './RichTextEditor';
 
 const CreateAPost = () => {
   const [showEditor, setShowEditor] = useState(false);
@@ -8,13 +8,13 @@ const CreateAPost = () => {
   return (
     <>
       {!showEditor ? (
-        <div className="w-full h-32 flex items-center justify-center flex-col my-5">
+        <div className="flex flex-col items-center justify-center w-full h-32 my-5">
           <div
-            className="flex items-center justify-center flex-col w-1/6 h-full rounded-lg hover:bg-gray-200 cursor-pointer"
+            className="flex flex-col items-center justify-center w-1/6 h-full rounded-lg cursor-pointer hover:bg-gray-200"
             onClick={() => setShowEditor(true)}
           >
             <FaPlus className="text-forum-createPost" />
-            <div className="text-forum-createPost mt-2 font-poppins font-bold">Create a post here</div>
+            <div className="mt-2 font-bold text-center text-forum-createPost font-poppins">Create a post here</div>
           </div>
         </div>
       ) : (

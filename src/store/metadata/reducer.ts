@@ -5,6 +5,7 @@ const initialState: MetaData = {
   acadYear: '2021-2022',
   semester: 2,
   tags: [],
+  counter: 0,
 };
 
 type MetaPayload = {
