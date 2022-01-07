@@ -31,7 +31,7 @@ export const createPost = async ({
       tags: tags,
       comments: [],
       creationDate: Timestamp.fromDate(new Date()),
-      id: newId,
+      id: String(newId),
       isAnonymous: true,
       moduleCode: moduleCode,
       upvotes: 0,

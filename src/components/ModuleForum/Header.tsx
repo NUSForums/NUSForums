@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <div className="pt-5">
       <div className="ml-1 text-2xl font-extrabold font-poppins text-forum-title">
-        {module} - {moduleInfo.title}
+        {module} - {moduleInfo?.title}
       </div>
       <div className="flex items-center justify-between">
         <div className="flex items-center mb-1">

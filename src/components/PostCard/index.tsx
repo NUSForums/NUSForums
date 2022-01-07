@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import ShowMoreText from 'react-show-more-text';
 import Tag from '../Tag';
 import { MdThumbUp, MdThumbDown } from 'react-icons/md';
+import AddComment from './AddComment';
 
 interface PostCardProps {
   post: Post;
@@ -47,9 +48,9 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
         </div>
       </div>
 
-      {post.comments.length > 0 && (
-        <div className="mt-5">
-          {post.comments.map((comment, i) => {
+      <div className="flex flex-col gap-4">
+        {post.comments.length > 0 &&
+          post.comments.map((comment, i) => {
             return (
               <div className="flex flex-row" key={`${comment.comment}-${i}`}>
                 <img
@@ -64,8 +65,8 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
               </div>
             );
           })}
-        </div>
-      )}
+        <AddComment postId={post.id} />
+      </div>
     </div>
   );
 };
