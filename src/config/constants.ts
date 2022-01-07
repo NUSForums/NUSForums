@@ -1,0 +1,1 @@
+export const NUSMOD_API = 'https://api.nusmods.com/v2'

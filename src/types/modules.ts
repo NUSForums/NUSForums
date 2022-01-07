@@ -102,7 +102,7 @@ export type NUSModuleAttributes = Partial<{
 }>;
 
 // Information for a module for a particular academic year.
-export type Module = {
+export type NUSModules = {
   acadYear: AcadYear;
 
   // Basic info

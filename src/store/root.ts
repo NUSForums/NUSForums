@@ -2,14 +2,18 @@ import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
-// import postsReducer from './posts/reducer';
 import modulesReducer from './modules/reducer';
 import userReducer from './user/reducer';
+import metaReducer from './metadata/reducer';
 
-const RootReducer = combineReducers({ modulesReducer, userReducer });
+const RootReducer = combineReducers({
+  metadata: metaReducer,
+  modules: modulesReducer,
+  user: userReducer,
+});
 
-const Store = createStore(RootReducer, composeWithDevTools(applyMiddleware(thunk)));
+const store = createStore(RootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
-export type RootState = ReturnType<typeof RootReducer>;
-
-export default Store;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+export default store;

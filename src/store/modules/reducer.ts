@@ -1,16 +1,34 @@
-import { Action, isType } from '../utils';
-import type { Module } from './type';
+import { ModuleCondensed } from '../../types/modules';
+import {  ActionMap } from '../utils';
 
-// TODO: Once all the api modules are scraped, make a map function that extract the module code out in an array as const. Then using that
-// we mapped that as a key with it the keys being optional
-interface InitialState {
-  [key: string]: Module;
+interface ModulesMap {
+  [key: string]: ModuleCondensed;
 }
 
-const initialState = {};
+const initialState: ModulesMap = {};
 
-const modulesReducer = (state: InitialState = initialState, action: Action<any>): InitialState => {
-  return state;
+type ModulePayload = {
+  ['ADD_MODULES']: ModuleCondensed[];
+  ['UPDATE_MODULE']: ModuleCondensed;
+};
+
+type ModuleActions = ActionMap<ModulePayload>[keyof ActionMap<ModulePayload>];
+
+const modulesReducer = (prevState: ModulesMap = initialState, action: ModuleActions): ModulesMap => {
+  switch (action.type) {
+    case 'ADD_MODULES':
+      return {
+        ...prevState,
+        ...action.payload?.reduce((acc, curr) => {
+          acc[curr.moduleCode] = curr;
+          return acc;
+        }, {} as ModulesMap),
+      };
+    case 'UPDATE_MODULE':
+      return { ...initialState, [action.payload.moduleCode]: action.payload };
+    default:
+      return prevState;
+  }
 };
 
 export default modulesReducer;

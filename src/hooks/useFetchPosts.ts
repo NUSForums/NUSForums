@@ -1,7 +1,7 @@
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
 import { db } from '../config/firebase';
-import { Post } from '../store/posts/type';
+import { Post } from '../types/posts';
 
 export const useFetchPosts = (moduleCode: string) => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -15,11 +15,9 @@ export const useFetchPosts = (moduleCode: string) => {
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const posts: Post[] = [];
-      console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
         posts.push(doc.data() as Post);
       });
-      console.log(posts);
       setPosts(posts);
     });
     return unsubscribe;

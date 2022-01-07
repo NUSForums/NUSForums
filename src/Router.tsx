@@ -2,14 +2,46 @@ import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import 'firebase/firestore';
-import { auth } from './config/firebase';
+import { auth, db } from './config/firebase';
 
 import LandingPage from './pages/LandingPage';
 import Forum from './pages/Forum';
 import ModuleForum from './components/ModuleForum';
+import { doc, onSnapshot } from 'firebase/firestore';
+import { MetaData } from './store/metadata/type';
+import { useAppDispatch, useAppSelector } from './hooks/reduxHooks';
+import axios from 'axios';
+import { NUSMOD_API } from './config/constants';
+import { ModuleCondensed } from './types/modules';
+import { toast } from 'react-toastify';
 
 const MainRouter = () => {
-  const [initializationComplete, setInitComplete] = useState(false);
+  const dispatch = useAppDispatch();
+  const acadYear = useAppSelector((state) => state.metadata.acadYear);
+
+  // fetch metadata
+  useEffect(() => {
+    const unsubscribe = onSnapshot(doc(db, 'metadata', 'current'), (doc) => {
+      dispatch({ type: 'UPDATE_METADATA', payload: doc.data() as MetaData });
+    });
+
+    return unsubscribe;
+  }, [dispatch]);
+
+  // fetch metadata
+  useEffect(() => {
+    if (acadYear) {
+      axios
+        .get(`${NUSMOD_API}/${acadYear}/moduleList.json`, {
+          params: {
+            acadYear: acadYear,
+          },
+        })
+        .then((res) => res.data as ModuleCondensed[])
+        .then((mods) => dispatch({ type: 'ADD_MODULES', payload: mods }))
+        .catch((err) => toast.error(err));
+    }
+  }, [acadYear, dispatch]);
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
