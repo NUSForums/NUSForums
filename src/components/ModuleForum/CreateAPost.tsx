@@ -10,15 +10,15 @@ const CreateAPost = () => {
       {!showEditor ? (
         <div className="flex flex-col items-center justify-center w-full h-32 my-5">
           <div
-            className="flex flex-col items-center justify-center w-1/6 h-full rounded-lg cursor-pointer hover:bg-gray-200"
+            className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer hover:bg-gray-200"
             onClick={() => setShowEditor(true)}
           >
             <FaPlus className="text-forum-createPost" />
-            <div className="mt-2 font-bold text-center text-forum-createPost font-poppins">Create a post here</div>
+            <div className="mt-2 font-bold text-center text-forum-createPost font-poppins">Create a post</div>
           </div>
         </div>
       ) : (
-        <div className="my-5">
+        <div className="px-4 py-6 my-5 bg-white shadow-post rounded-xl">
           <RichTextEditor setShowEditor={setShowEditor} />
         </div>
       )}

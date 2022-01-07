@@ -82,7 +82,7 @@ const RichTextEditor = ({ setShowEditor }) => {
 
   return (
     <div>
-      <div className="font-semibold">Post Title</div>
+      <div className="pb-1 font-semibold ">Post Title</div>
       <CKEditor
         editor={ClassicEditor}
         config={{ toolbar: [] }}
@@ -92,7 +92,7 @@ const RichTextEditor = ({ setShowEditor }) => {
           titleRef.current = data;
         }}
       />
-      <div className="pt-5 font-semibold">Post Subject</div>
+      <div className="pt-5 pb-1 font-semibold">Post Subject</div>
       <CKEditor
         editor={ClassicEditor}
         config={editorConfiguration}
@@ -113,7 +113,7 @@ const RichTextEditor = ({ setShowEditor }) => {
           console.log('Focus.', editor);
         }}
       />
-      <div className="pt-5 font-semibold">Select relevant tags</div>
+      <div className="pt-5 pb-1 font-semibold">Select relevant tags</div>
 
       <div className="flex flex-row gap-2">
         {tagList.map((tagname) => (
