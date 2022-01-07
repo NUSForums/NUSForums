@@ -68,7 +68,7 @@ const voteReducer = (prevState: Votes = getInitialState(), action: VoteActions):
   }
 };
 
-const voteReducerWithUpdate = (prevState: Votes, action: VoteActions): Votes => {
+const voteReducerWithUpdate = (prevState: Votes | undefined, action: VoteActions): Votes => {
   const result = voteReducer(prevState, action);
   localStorage.setItem('votes', JSON.stringify(result));
   return result;

@@ -466,7 +466,7 @@ const ModuleInfo = ({ moduleCode }: Props) => {
   }, [acadYear, moduleCode]);
 
   return (
-    <div className="px-5 py-2 bg-white rounded-lg shadow-post">
+    <div className="px-5 pt-2 pb-4 bg-white rounded-lg shadow-post">
       <Information content={moduleInfo?.description} />
       <Item heading="Prerequisite" content={moduleInfo?.prerequisite} />
       <Item heading="Preclusion" content={moduleInfo?.preclusion} />

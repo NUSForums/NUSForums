@@ -38,7 +38,7 @@ const Forum = () => {
       <Sidebar />
       <div className="flex flex-col w-full h-screen">
         <Header />
-        <div className="w-full h-auto overflow-y-auto">
+        <div className="w-full h-screen overflow-y-auto">
           {location.pathname === '/forum' ? (
             <div className="w-full h-full px-5 pt-2 pb-5">
               {filteredMods.map((mod) => {

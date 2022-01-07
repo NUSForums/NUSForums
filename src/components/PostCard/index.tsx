@@ -93,7 +93,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
         <div className="flex flex-row items-center gap-3">
           <div
             className={`p-1 flex flex-row items-center cursor-pointer rounded-lg ${
-              votes[post.id] === '+' ? ' border-2' : ''
+              votes?.[post.id] === '+' ? ' border-2' : ''
             }`}
             onClick={() =>
               upVote().catch((err) => {
@@ -107,7 +107,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
           </div>
           <div
             className={`p-1 flex flex-row items-center cursor-pointer rounded-lg ${
-              votes[post.id] === '-' ? ' border-2' : ''
+              votes?.[post.id] === '-' ? ' border-2' : ''
             }`}
             onClick={() =>
               downVote().catch((err) => {

@@ -50,7 +50,7 @@ const UserInfo: React.FC<AvatarProps> = ({ className }) => {
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={() => null}
+        onClose={() => setAnchorEl(null)}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}

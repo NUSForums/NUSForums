@@ -13,7 +13,7 @@ const Button = ({ onClick, text, isSubmitButton }: ButtonProps) => {
       onClick={onClick}
       className={`px-5 py-2 rounded-2xl mx-2 my-5 cursor-pointer ${t ? 'bg' : 'text'}-forum-createPost ${
         t ? 'text' : 'bg'
-      }-white shadow-sm`}
+      }-white shadow-md`}
     >
       {text}
     </div>
