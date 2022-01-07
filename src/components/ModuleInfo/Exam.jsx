@@ -9,23 +9,11 @@ function getDateDiff(date) {
 
 const Exam = ({ date }) => {
   const dateFromExam = date === undefined ? '' : getDateDiff(date);
-
-  // const examDate = parseDate(date);
-  // const currDate = parseDate(Date.now());
-  // const dateDiff = currDate - examDate;
-
-  // return (
-  //   <div>
-  //     <h3>Exam</h3>
-  //     <p>{dateDiff}</p>
-  //     <p>{date}</p>
-  //   </div>
-  // );
   return (
     <>
       <div className="flex">
         <b>Exam</b>
-        <p>{`(in ${dateFromExam} days)`}</p>
+        {dateFromExam > 0 && <p>{`(in ${dateFromExam} days)`}</p>}
       </div>
       <p>{date}</p>
     </>
