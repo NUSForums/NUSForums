@@ -41,31 +41,31 @@ const Forum = () => {
   return (
     <div className="flex">
       <Sidebar />
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full h-screen">
         <Header />
-        {/* <div className=""> */}
-        {location.pathname === '/forum' ? (
-          <div className="w-full h-full px-5 pt-2 pb-5">
-            {filteredMods.map((mod) => {
-              return (
-                <button
-                  className="flex flex-row items-center w-full py-2 mt-3 bg-gray-200 rounded-lg"
-                  onClick={() => {
-                    console.log(mod.moduleCode);
-                    navigate(`/forum/${mod.moduleCode}`);
-                    dispatch({ type: 'CLEAR_SEARCH' });
-                  }}
-                >
-                  <p className="w-32 px-5 text-lg font-semibold tracking-wider text-left">{mod.moduleCode}</p>
-                  <p className="text-base">{mod.title}</p>
-                </button>
-              );
-            })}
-          </div>
-        ) : (
-          <Outlet />
-        )}
-        {/* </div> */}
+        <div className="w-full h-auto overflow-y-auto">
+          {location.pathname === '/forum' ? (
+            <div className="w-full h-full px-5 pt-2 pb-5">
+              {filteredMods.map((mod) => {
+                return (
+                  <button
+                    className="flex flex-row items-center w-full py-2 mt-3 bg-gray-200 rounded-lg"
+                    onClick={() => {
+                      console.log(mod.moduleCode);
+                      navigate(`/forum/${mod.moduleCode}`);
+                      dispatch({ type: 'CLEAR_SEARCH' });
+                    }}
+                  >
+                    <p className="w-32 px-5 text-lg font-semibold tracking-wider text-left">{mod.moduleCode}</p>
+                    <p className="text-base">{mod.title}</p>
+                  </button>
+                );
+              })}
+            </div>
+          ) : (
+            <Outlet />
+          )}
+        </div>
       </div>
     </div>
   );
