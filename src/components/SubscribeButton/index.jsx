@@ -4,7 +4,7 @@ import { useAppDispatch } from '../../hooks/reduxHooks';
 /*
  TESTING PURPOSES
 */
-const ModuleButton = () => {
+const SubscribeButton = ({ moduleCode }) => {
   const modulesPin = [
     'CS3230',
     'CS2102',
@@ -19,16 +19,18 @@ const ModuleButton = () => {
     'CS2100',
   ];
 
-  const [state, setState] = useState(0);
   const dispatch = useAppDispatch();
 
   const onClick = () => {
-    dispatch({ type: 'ADD_PINS', payload: `${modulesPin[state]}` });
-    setState((state) => state + 1);
+    dispatch({ type: 'ADD_PINS', payload: `${moduleCode}` });
     console.log('called');
   };
 
-  return <div onClick={onClick}>test test test</div>;
+  return (
+    <button className="py-3 text-center font-bold text-forum-title bg-white rounded-lg text-lg" onClick={onClick}>
+      Subscribe
+    </button>
+  );
 };
 
-export default ModuleButton;
+export default SubscribeButton;

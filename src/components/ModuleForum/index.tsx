@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useFetchPosts } from '../../hooks';
 import { useAppSelector } from '../../hooks/reduxHooks';
-import ModuleInfo from '../ModuleInfo/ModuleInfo';
 import { PostCard } from '../PostCard';
+import RightBar from '../RightBar/RightBar';
 import CreateAPost from './CreateAPost';
 import Header from './Header';
 
@@ -23,7 +23,7 @@ const ModuleForum = () => {
           ))}
         </div>
       </div>
-      <ModuleInfo moduleCode={module} />
+      <RightBar moduleCode={module} />
     </div>
   );
 };

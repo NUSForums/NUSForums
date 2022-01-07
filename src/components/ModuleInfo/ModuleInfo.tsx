@@ -459,6 +459,7 @@ const ModuleInfo = ({ moduleCode }: Props) => {
 
   const [moduleInfo, setModuleInfo] = useState<NUSModules>(defaultData);
   const examDate = moduleInfo?.semesterData.filter((x) => x.semester === semester)[0]?.examDate;
+  console.log(moduleCode);
 
   useEffect(() => {
     if (canFetch && !!moduleCode) {
@@ -469,7 +470,7 @@ const ModuleInfo = ({ moduleCode }: Props) => {
   }, [acadYear, moduleCode]);
 
   return (
-    <div className="w-1/5 p-5 m-5 bg-white rounded-lg">
+    <div className="px-5 my-4 py-2 bg-white rounded-lg">
       <Information content={moduleInfo?.description} />
       <Item heading="Prerequisite" content={moduleInfo?.prerequisite} />
       <Item heading="Preclusion" content={moduleInfo?.preclusion} />
