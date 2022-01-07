@@ -1,8 +1,8 @@
-import app from 'firebase/app';
-import 'firebase/messaging';
-import 'firebase/auth';
-import 'firebase/functions';
-import 'firebase/firestore';
+import firebase from 'firebase/app';
+import { getMessaging } from 'firebase/messaging';
+import { getAuth } from 'firebase/auth';
+import { getFunctions } from 'firebase/functions';
+import { getFirestore } from 'firebase/firestore';
 
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -12,6 +12,10 @@ const config = {
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_ID,
   appId: '1:961694321956:web:38b7eaf90dd12e728177b1',
 };
-app.initializeApp(config);
+firebase.initializeApp(config);
 
-export default app;
+export const auth = getAuth();
+export const messaging = getMessaging();
+export const functions = getFunctions();
+export const db = getFirestore();
+export default firebase;
