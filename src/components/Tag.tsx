@@ -38,7 +38,7 @@ const Tag = ({ name, button }: TagProps) => {
         name
       )} w-24 grid place-items-center rounded-2xl text-white font-nunito text-sm tracking-wider mx-1 border-2 border-transparent  my-3 shadow-sm ${
         button ? 'cursor-pointer' : ''
-      } ${button && queryParams.get('filter') === name ? 'border-2 border-black drop-shadow' : ''}`}
+      } ${button && queryParams.get('filter') === name ? 'border-2 border-black drop-shadow' : 'cursor-pointer'}`}
       onClick={() => navigateTo(name)}
     >
       {name}
