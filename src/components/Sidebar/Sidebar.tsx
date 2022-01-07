@@ -8,7 +8,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     const val = localStorage.getItem('pins');
-    const value = (val ?? []) as string[];
+    const value: string[] = val ? JSON.parse(val) : [];
     dispatch({ type: 'FETCH_PINS', payload: value });
   }, []);
 

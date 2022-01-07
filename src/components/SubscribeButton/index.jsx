@@ -3,9 +3,10 @@ import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 
 const SubscribeButton = ({ moduleCode }) => {
   const dispatch = useAppDispatch();
-  const pins = useAppSelector((state) => state.pins.pins);
+  const { pins } = useAppSelector((state) => state.pins);
 
   const onClick = () => {
+    localStorage.setItem('pins', JSON.stringify([...pins, moduleCode]));
     dispatch({ type: 'ADD_PINS', payload: `${moduleCode}` });
   };
 

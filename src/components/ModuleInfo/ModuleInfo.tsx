@@ -450,19 +450,15 @@ const defaultData: NUSModules = {
   ],
 };
 
-// TODO @Keane Remove later
-const canFetch: boolean = false;
-
 const ModuleInfo = ({ moduleCode }: Props) => {
   const acadYear = useAppSelector((state) => state.metadata.acadYear);
   const semester = useAppSelector((state) => state.metadata.semester);
 
   const [moduleInfo, setModuleInfo] = useState<NUSModules>(defaultData);
   const examDate = moduleInfo?.semesterData.filter((x) => x.semester === semester)[0]?.examDate;
-  console.log(moduleCode);
 
   useEffect(() => {
-    if (canFetch && !!moduleCode) {
+    if (!!moduleCode) {
       axios.get(`${NUSMOD_API}/${acadYear}/modules/${moduleCode}.json`).then((res) => {
         setModuleInfo(res.data);
       });
