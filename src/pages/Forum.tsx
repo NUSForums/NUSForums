@@ -8,7 +8,7 @@ import { ModuleCondensed } from '../types/modules';
 
 const Forum = () => {
   const { searchValue, mods } = useAppSelector((state) => ({
-    searchValue: state.search,
+    searchValue: state.search.value,
     mods: state.modules,
   }));
   const dispatch = useAppDispatch();
@@ -17,9 +17,9 @@ const Forum = () => {
   const [filteredMods, setFilteredMods] = useState<ModuleCondensed[]>([]);
 
   useEffect(() => {
-    if (!!searchValue.value && mods) {
-      const lowerCaseSearchVal = searchValue.value.toLowerCase();
-      const upperCaseSearchVal = searchValue.value.toUpperCase();
+    if (!!searchValue && mods) {
+      const lowerCaseSearchVal = searchValue.toLowerCase();
+      const upperCaseSearchVal = searchValue.toUpperCase();
 
       setFilteredMods([
         ...Object.values(mods).filter((mod) => {
@@ -31,6 +31,10 @@ const Forum = () => {
       setFilteredMods([]);
     }
   }, [searchValue, mods]);
+
+  useEffect(() => {
+    console.log(searchValue);
+  }, [searchValue]);
 
   return (
     <div className="flex">
@@ -45,6 +49,7 @@ const Forum = () => {
               return (
                 <button
                   onClick={() => {
+                    console.log(mod.moduleCode)
                     navigate(`/forum/${mod.moduleCode}`);
                     dispatch({ type: 'CLEAR_SEARCH' });
                   }}

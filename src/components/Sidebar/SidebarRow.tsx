@@ -19,11 +19,11 @@ const colorArray = [
   '#FEEC49',
 ];
 
-const SidebarRow = ({ code, index }: SidebarProps) => {
+const SidebarRow: React.FC<SidebarProps> = ({ code, index }) => {
   return (
-    <Link to={`/forum/${code}`} className="my-1 flex items-center cursor-pointer hover:bg-forum-sidebarHover px-5 py-1">
+    <Link to={`/forum/${code}`} className="flex items-center px-5 py-1 my-1 cursor-pointer hover:bg-forum-sidebarHover">
       <div className="w-10 h-10 mr-2" style={{ background: `${colorArray[index % colorArray.length]}` }} />
-      <div className="text-forum-sidebarText text-sidebarText font-medium">{code}</div>
+      <div className="font-medium text-forum-sidebarText text-sidebarText">{code}</div>
     </Link>
   );
 };

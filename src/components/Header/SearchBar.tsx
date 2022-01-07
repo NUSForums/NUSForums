@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MdOutlineSearch } from 'react-icons/md';
-import { useDispatch } from 'react-redux';
 import { useDebounce } from 'use-hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 
 interface SearchBarProps {
   className?: string;
@@ -10,11 +10,18 @@ interface SearchBarProps {
 const SearchBar: React.FC<SearchBarProps> = ({ className }) => {
   const [searchValue, setSearchValue] = useState('');
   const debouncedSearch = useDebounce(searchValue, 300);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const resetIndicator = useAppSelector((state) => state.search.shouldClear);
 
   useEffect(() => {
     dispatch({ type: 'SET_SEARCH', payload: debouncedSearch });
   }, [debouncedSearch, dispatch]);
+
+  useEffect(() => {
+    if (resetIndicator) {
+      setSearchValue('');
+    }
+  }, [resetIndicator, dispatch]);
 
   return (
     <div className={`flex flex-row items-center h-8 px-4 py-5 bg-gray-100 rounded-3xl ${className}`}>

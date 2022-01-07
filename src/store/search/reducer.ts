@@ -3,6 +3,7 @@ import type { Search } from './type';
 
 const initialState = {
   value: '',
+  shouldClear: false,
 };
 
 type SearchPayload = {
@@ -17,10 +18,12 @@ const searchReducer = (prevState: Search = initialState, action: SearchActions):
     case 'SET_SEARCH':
       return {
         value: action.payload,
+        shouldClear: false,
       };
     case 'CLEAR_SEARCH':
       return {
-        ...initialState,
+        ...prevState,
+        shouldClear: true,
       };
     default:
       return prevState;
