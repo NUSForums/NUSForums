@@ -5,11 +5,13 @@ import thunk from 'redux-thunk';
 import modulesReducer from './modules/reducer';
 import userReducer from './user/reducer';
 import metaReducer from './metadata/reducer';
+import pinsReducer from './pins/reducer';
 
 const RootReducer = combineReducers({
   metadata: metaReducer,
   modules: modulesReducer,
   user: userReducer,
+  pins: pinsReducer,
 });
 
 const store = createStore(RootReducer, composeWithDevTools(applyMiddleware(thunk)));

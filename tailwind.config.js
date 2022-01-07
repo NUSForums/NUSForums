@@ -31,6 +31,7 @@ module.exports = {
         tutorials: '#0B9999',
         lectures: '#C856DB',
         sidebar: '#1A222D',
+        sidebarHover: '#333f4f',
         searchbar: '#F3F4F6',
         background: '#F4F7F8',
         text: '#3A3A48',
@@ -38,6 +39,7 @@ module.exports = {
         sidebarTitle: '#597093',
         createPost: '#525F7F',
         readMore: '#3F4348',
+        sidebarText: '#C4CBD1',
       },
     },
     spacing: {
@@ -238,6 +240,8 @@ module.exports = {
       DEFAULT: '1',
     },
     fontFamily: {
+      lato: ['lato'],
+      poppins: 'Poppins',
       sans: [
         'Apercu',
         'ui-sans-serif',
@@ -283,6 +287,7 @@ module.exports = {
       '7xl': ['4.5rem', { lineHeight: '1' }],
       '8xl': ['6rem', { lineHeight: '1' }],
       '9xl': ['8rem', { lineHeight: '1' }],
+      sidebarText: ['0.825rem', { lineHeight: '1.35rem' }],
     },
     fontWeight: {
       thin: '100',
@@ -434,6 +439,7 @@ module.exports = {
       '5/6': '83.333333%',
       full: '100%',
       screen: '100vh',
+      10: '10px',
     }),
     inset: (theme, { negative }) => ({
       auto: 'auto',
@@ -802,6 +808,8 @@ module.exports = {
       screen: '100vw',
       min: 'min-content',
       max: 'max-content',
+      200: '200px',
+      10: '10px',
     }),
     zIndex: {
       auto: 'auto',
