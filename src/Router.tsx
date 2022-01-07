@@ -2,12 +2,11 @@ import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import 'firebase/firestore';
-import { doc, getDoc } from 'firebase/firestore';
-import { auth, db } from './config/firebase';
+import { auth } from './config/firebase';
 
 import LandingPage from './pages/LandingPage';
 import Forum from './pages/Forum';
-import ModuleForum from './components/ModuleForum/ModuleForum';
+import ModuleForum from './components/ModuleForum';
 
 const MainRouter = () => {
   const [initializationComplete, setInitComplete] = useState(false);
@@ -37,10 +36,10 @@ const MainRouter = () => {
     return (
       <Router>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
           <Route path="forum" element={<Forum />}>
             <Route path=":module" element={<ModuleForum />} />
           </Route>
+          <Route path="/" element={<LandingPage />} />
         </Routes>
       </Router>
     );

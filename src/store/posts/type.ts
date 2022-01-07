@@ -5,6 +5,7 @@ type Post = {
   tags: string[];
   moduleCode: string;
   userId: string;
+  userName: string;
   isAnonymous: boolean;
   upvotes: number;
   downvotes: number;

@@ -1,7 +1,7 @@
-import { Action, isType } from '../utils';
+import { Action } from '../utils';
 import type { User } from './type';
 
-const initialState = {
+const initialState: User = {
   name: '',
   userId: '',
   isAdmin: false,
