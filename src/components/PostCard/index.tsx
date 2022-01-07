@@ -3,6 +3,7 @@ import moment from 'moment';
 import { useMemo } from 'react';
 import ShowMoreText from 'react-show-more-text';
 import Tag from '../Tag';
+import { MdThumbUp, MdThumbDown } from 'react-icons/md';
 
 interface PostCardProps {
   post: Post;
@@ -37,7 +38,13 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
             <Tag name={tag} key={tag} />
           ))}
         </div>
-        <div>vote</div>
+        <div className="flex flex-row items-center gap-1">
+          <MdThumbUp className="text-blue-500 cursor-pointer" />
+          {post.upvotes}
+          <div className="w-2" />
+          <MdThumbDown className="text-red-500 cursor-pointer" />
+          {post.downvotes}
+        </div>
       </div>
 
       {post.comments.length > 0 && (

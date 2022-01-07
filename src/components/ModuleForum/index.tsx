@@ -17,7 +17,7 @@ const ModuleForum = () => {
         <Header />
         <CreateAPost />
         <RightBar moduleCode={module} className="flex flex-col-reverse gap-5 mb-5 lg:hidden" />
-        <div className="text-lg font-bold text-forum-title">Posts</div>
+        <div className="text-lg font-bold text-forum-title lg:hidden">Posts</div>
         <div className="grid grid-cols-1 gap-5 ">
           {posts.map((post) => (
             <PostCard post={post} key={post.id} />

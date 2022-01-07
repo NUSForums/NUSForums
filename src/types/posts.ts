@@ -14,6 +14,7 @@ type Post = {
 };
 
 type Comment = {
+  id: string;
   userId: string;
   userName: string;
   comment: string;

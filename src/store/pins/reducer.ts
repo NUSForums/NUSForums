@@ -4,11 +4,13 @@ interface InitialState {
   pins: string[];
 }
 
-const initialState = {
-  pins: [],
+const getInitialState = (): InitialState => {
+  const pins = JSON.parse(localStorage.getItem('pins') || '[]');
+
+  return { pins };
 };
 
-const pinsReducer = (state: InitialState = initialState, action: Action<any>): InitialState => {
+const pinsReducer = (state: InitialState = getInitialState(), action: Action<any>): InitialState => {
   switch (action.type) {
     case 'FETCH_PINS':
       return {

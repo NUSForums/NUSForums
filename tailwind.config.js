@@ -815,8 +815,7 @@ module.exports = {
       min: 'min-content',
       max: 'max-content',
       '10px': '10px',
-      200: '200px',
-      10: '10px',
+      '200px': '200px',
       28: '7rem',
     }),
     zIndex: {

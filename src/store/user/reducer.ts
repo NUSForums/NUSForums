@@ -12,14 +12,19 @@ const getAnonymousDetails = () => {
       style: 'capital',
     });
   localStorage.setItem('name', name);
+
+  // const votes = localStorage.getVotes('votes') || {};
+  // localStorage.setItem('votes', votes);
   return {
     image: `https://avatars.dicebear.com/api/gridy/${name?.replaceAll(' ', '')}.svg`,
     name: name,
+    // votes: votes,
   };
 };
 
 const getInitialState = (): User => {
   const anon = getAnonymousDetails();
+  // const votes = 
 
   return {
     name: '',
@@ -27,14 +32,12 @@ const getInitialState = (): User => {
     image: anon.image,
     isAdmin: false,
     anonymousName: anon.name,
-    modulesPinned: [],
   };
 };
 
 type UserPayload = {
   ['UPDATE_PROFILE']: Partial<User>;
   ['CHANGE_ANONYMOUS_NAME']: string;
-  ['UPDATE_PINNED']: string[];
   ['SIGN_OUT']: undefined;
 };
 
@@ -51,11 +54,6 @@ const userReducer = (prevState: User = getInitialState(), action: UserActions): 
       return {
         ...prevState,
         anonymousName: action.payload,
-      };
-    case 'UPDATE_PINNED':
-      return {
-        ...prevState,
-        modulesPinned: action.payload,
       };
     case 'SIGN_OUT':
       return {
