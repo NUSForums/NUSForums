@@ -12,8 +12,8 @@ const ModuleForum = () => {
   const { posts } = useFetchPosts(module || '', queryParams.get('filter'), queryParams.get('sort'));
 
   return (
-    <div className="flex flex-row">
-      <div className="flex flex-col p-5">
+    <div className="flex flex-row w-full h-auto mb-2">
+      <div className="flex flex-col flex-grow p-5">
         <Header />
         <CreateAPost />
         <RightBar moduleCode={module} className="flex flex-col-reverse gap-5 mb-5 lg:hidden" />

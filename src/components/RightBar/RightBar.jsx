@@ -4,7 +4,7 @@ import ModuleInfo from '../ModuleInfo/ModuleInfo';
 
 const RightBar = ({ moduleCode, className }) => {
   return (
-    <div className={`w-full lg:w-1/4 ${className}`}>
+    <div className={`w-full lg:w-1/4 lg:min-w-1/4 ${className}`}>
       <SubscribeButton moduleCode={moduleCode} />
       <ModuleInfo moduleCode={moduleCode} />
     </div>

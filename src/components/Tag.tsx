@@ -13,14 +13,22 @@ function convert(name: string): string {
 const Tag = ({ name, button }: TagProps) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const queryParams = new URLSearchParams(location.search);
 
   function navigateTo(filterType: string) {
-    const queryParams = new URLSearchParams(location.search);
-
     if (queryParams.has('filter')) {
-      queryParams.delete('filter');
+      if (queryParams.get('filter') === filterType) {
+        // unselect
+        queryParams.delete('filter');
+      } else {
+        // select another
+        queryParams.delete('filter');
+        queryParams.append('filter', filterType);
+      }
+    } else {
+      //select new
+      queryParams.append('filter', filterType);
     }
-    queryParams.append('filter', filterType);
     navigate(`?${queryParams.toString()}`);
   }
 
@@ -28,9 +36,9 @@ const Tag = ({ name, button }: TagProps) => {
     <div
       className={`py-1 bg-forum-${convert(
         name
-      )} w-24 grid place-items-center rounded-2xl text-white font-nunito text-sm tracking-wider mx-1 my-3 shadow-sm ${
+      )} w-24 grid place-items-center rounded-2xl text-white font-nunito text-sm tracking-wider mx-1 border-2 border-transparent  my-3 shadow-sm ${
         button ? 'cursor-pointer' : ''
-      }`}
+      } ${button && queryParams.get('filter') === name ? 'border-2 border-black drop-shadow' : ''}`}
       onClick={() => navigateTo(name)}
     >
       {name}

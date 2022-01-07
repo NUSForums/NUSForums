@@ -24,7 +24,7 @@ const Header = () => {
         CS3230 - Software Engineering Project
       </div>
       <div className="flex items-center justify-between">
-        <div className="flex items-center">
+        <div className="flex items-center mb-1">
           {tagList.map((tag) => (
             <Tag name={tag} key={tag} button={true} />
           ))}
