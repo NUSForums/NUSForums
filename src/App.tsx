@@ -1,13 +1,14 @@
 import { ToastContainer } from 'react-toastify';
-import { UserProvider } from './contexts/userContext';
 import MainRouter from './Router';
+import { Provider } from 'react-redux';
+import Store from './store/root';
 
 function App() {
   return (
-    <UserProvider>
+    <Provider store={Store}>
       <ToastContainer />
       <MainRouter />
-    </UserProvider>
+    </Provider>
   );
 }
 
