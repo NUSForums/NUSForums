@@ -18,7 +18,7 @@ const Sidebar = () => {
       <p className="px-5 pt-5 my-2 text-lg font-bold text-gray-50 font-poppins">Modules</p>
       <div className="w-full">
         {pins.map((code: string, index: number) => (
-          <SideBarRow code={code} key={index} index={index} />
+          <SideBarRow code={code} key={code} index={index} />
         ))}
       </div>
     </div>
