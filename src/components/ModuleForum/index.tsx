@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useFetchPosts } from '../../hooks';
 import { useAppSelector } from '../../hooks/reduxHooks';

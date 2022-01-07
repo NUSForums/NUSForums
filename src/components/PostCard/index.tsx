@@ -2,6 +2,7 @@ import { Post } from '../../types/posts';
 import moment from 'moment';
 import { useMemo } from 'react';
 import ShowMoreText from 'react-show-more-text';
+import Tag from '../Tag';
 
 interface PostCardProps {
   post: Post;
@@ -30,13 +31,17 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
         {post.body}
       </ShowMoreText>
       <div className="flex flex-row justify-between">
-        <div>tags</div>
+        <div className="flex items-center">
+          {post.tags.map((tag) => (
+            <Tag name={tag} key={tag} />
+          ))}
+        </div>
         <div>vote</div>
       </div>
       <div className="mt-5">
-        {post.comments.map((comment) => {
+        {post.comments.map((comment, i) => {
           return (
-            <div className="flex flex-row">
+            <div className="flex flex-row" key={`${comment.comment}-${i}`}>
               <img
                 className="w-10 h-10 p-1 bg-white rounded-full"
                 alt="profile"

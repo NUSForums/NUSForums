@@ -1,5 +1,3 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 interface TagProps {
@@ -9,15 +7,8 @@ interface TagProps {
 
 // converts things like Mid Terms -> midTerms and General -> general
 function convert(name: string): string {
-  return lowerCaseFirstLetter(name.replace(/\s+/g, ''));
-}
-
-function lowerCaseFirstLetter(name: string): string {
   return name.charAt(0).toLocaleLowerCase() + name.slice(1);
 }
-
-const isExtraFilter = ['popular', 'recent'];
-const f = (name: string) => (isExtraFilter.includes(name.toLowerCase()) ? 1 : 0);
 
 const Tag = ({ name, button }: TagProps) => {
   const location = useLocation();

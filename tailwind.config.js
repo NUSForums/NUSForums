@@ -25,7 +25,7 @@ module.exports = {
       pink: colors.pink,
       forum: {
         general: '#56DB8B',
-        midTerms: '#6457FA',
+        midterms: '#6457FA',
         finals: '#AF2B2B',
         labs: '#FC5C7B',
         tutorials: '#0B9999',

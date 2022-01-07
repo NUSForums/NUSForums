@@ -4,9 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Tag from '../Tag';
 import Dropdown from './Dropdown';
 
-const tagList = ['General', 'Mid Terms', 'Finals', 'Labs', 'Tutorials', 'Lectures'] as const;
-const isExtraFilter = ['popular', 'recent'];
-const f = (name: string) => (isExtraFilter.includes(name.toLowerCase()) ? 1 : 0);
+const tagList = ['General', 'Midterms', 'Finals', 'Labs', 'Tutorials', 'Lectures'] as const;
 
 const Header = () => {
   const location = useLocation();
