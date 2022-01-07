@@ -42,7 +42,9 @@ const Forum = () => {
           {location.pathname === '/forum' ? (
             <div className="w-full h-full px-5 pt-2 pb-5">
               {filteredMods.map((mod) => {
-                return <SearchCard moduleCode={mod.moduleCode} title={mod.title} />;
+                return (
+                  <SearchCard moduleCode={mod.moduleCode} title={mod.title} key={`${mod.moduleCode}-${mod.title}`} />
+                );
               })}
             </div>
           ) : (
