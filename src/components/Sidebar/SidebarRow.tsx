@@ -22,7 +22,7 @@ const colorArray = [
 const SidebarRow: React.FC<SidebarProps> = ({ code, index }) => {
   return (
     <Link to={`/forum/${code}`} className="flex items-center px-5 py-1 my-1 cursor-pointer hover:bg-forum-sidebarHover">
-      <div className="w-10 h-10 mr-2" style={{ background: `${colorArray[index % colorArray.length]}` }} />
+      <div className="mr-2 w-10px h-10px" style={{ background: `${colorArray[index % colorArray.length]}` }} />
       <div className="font-medium text-forum-sidebarText text-sidebarText">{code}</div>
     </Link>
   );

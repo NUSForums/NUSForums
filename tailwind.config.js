@@ -439,7 +439,7 @@ module.exports = {
       '5/6': '83.333333%',
       full: '100%',
       screen: '100vh',
-      10: '10px',
+      '10px': '10px',
     }),
     inset: (theme, { negative }) => ({
       auto: 'auto',
@@ -808,8 +808,7 @@ module.exports = {
       screen: '100vw',
       min: 'min-content',
       max: 'max-content',
-      200: '200px',
-      10: '10px',
+      '10px': '10px',
     }),
     zIndex: {
       auto: 'auto',

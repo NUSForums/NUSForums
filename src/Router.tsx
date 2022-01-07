@@ -66,14 +66,16 @@ const MainRouter = () => {
   // TODO: change it later
   if (initComplete) {
     return (
-      <Router>
-        <Routes>
-          <Route path="forum" element={<Forum />}>
-            <Route path=":module" element={<ModuleForum />} />
-          </Route>
-          <Route path="/" element={<LandingPage />} />
-        </Routes>
-      </Router>
+      <div className="w-full h-full bg-forum-background">
+        <Router>
+          <Routes>
+            <Route path="forum" element={<Forum />}>
+              <Route path=":module" element={<ModuleForum />} />
+            </Route>
+            <Route path="/" element={<LandingPage />} />
+          </Routes>
+        </Router>
+      </div>
     );
   }
 

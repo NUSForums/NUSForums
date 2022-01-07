@@ -1,6 +1,6 @@
 type MetaData = {
   acadYear: string,
-  semester: string,
+  semester: number,
   tags: string[],
 };
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MdOutlineSearch } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 import { useDebounce } from 'use-hooks';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 
@@ -12,6 +13,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ className }) => {
   const debouncedSearch = useDebounce(searchValue, 300);
   const dispatch = useAppDispatch();
   const resetIndicator = useAppSelector((state) => state.search.shouldClear);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch({ type: 'SET_SEARCH', payload: debouncedSearch });
@@ -24,7 +26,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ className }) => {
   }, [resetIndicator, dispatch]);
 
   return (
-    <div className={`flex flex-row items-center h-8 px-4 py-5 bg-gray-100 rounded-3xl ${className}`}>
+    <div
+      onClick={() => navigate('/forum')}
+      className={`flex flex-row items-center h-8 px-4 py-5 bg-forum-searchbar rounded-3xl ${className}`}
+    >
       <MdOutlineSearch size={20} />
       <input
         type="search"

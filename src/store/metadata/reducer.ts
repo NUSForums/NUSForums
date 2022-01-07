@@ -3,7 +3,7 @@ import type { MetaData } from './type';
 
 const initialState: MetaData = {
   acadYear: '2021-2022',
-  semester: '2',
+  semester: 2,
   tags: [],
 };
 

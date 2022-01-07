@@ -457,7 +457,7 @@ const ModuleInfo = ({ moduleCode }: Props) => {
   const semester = useAppSelector((state) => state.metadata.semester);
 
   const [moduleInfo, setModuleInfo] = useState<NUSModules>(defaultData);
-  const examDate = moduleInfo?.semesterData[parseInt(semester) - 1]?.examDate;
+  const examDate = moduleInfo?.semesterData.filter((x) => x.semester === semester)[0]?.examDate;
 
   useEffect(() => {
     if (canFetch && !!moduleCode) {
