@@ -20,7 +20,7 @@ export const SearchCard: React.FC<SearchCardProps> = ({ moduleCode, title }) => 
       }}
     >
       <p className="w-32 px-5 text-lg font-semibold tracking-wider text-left">{moduleCode}</p>
-      <p className="text-base">{title}</p>
+      <p className="text-base text-left">{title}</p>
     </button>
   );
 };

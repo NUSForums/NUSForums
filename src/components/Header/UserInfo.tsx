@@ -45,12 +45,12 @@ const UserInfo: React.FC<AvatarProps> = ({ className }) => {
         src={image || `https://avatars.dicebear.com/api/gridy/${anonymousName.replaceAll(' ', '')}.svg`}
       />
       <span className="hidden pl-2 lg:flex">{anonymousName}</span>
-      <MdOutlineKeyboardArrowDown className="hidden lg:flex cursor-pointer" size={30} onClick={onClick} />
+      <MdOutlineKeyboardArrowDown className="hidden cursor-pointer lg:flex" size={30} onClick={onClick} />
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        onClose={() => null}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}
