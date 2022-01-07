@@ -5,6 +5,9 @@ import ShowMoreText from 'react-show-more-text';
 import Tag from '../Tag';
 import { MdThumbUp, MdThumbDown } from 'react-icons/md';
 import AddComment from './AddComment';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { votePost } from '../../lib/votePost';
+import { toast } from 'react-toastify';
 
 interface PostCardProps {
   post: Post;
@@ -12,6 +15,54 @@ interface PostCardProps {
 
 export const PostCard: React.FC<PostCardProps> = ({ post }) => {
   const daysAgo = useMemo(() => moment(post.creationDate).fromNow(), [post.creationDate]);
+  const { votes, user } = useAppSelector((state) => ({ votes: state.votes[post.moduleCode], user: state.user }));
+  const dispatch = useAppDispatch();
+
+  const upVote = () => {
+    dispatch({ type: 'TOGGLE_UPVOTE', payload: { module: post.moduleCode, post: post.id } });
+    if (votes && votes[post.id] === '+') {
+      return votePost({
+        postId: post.id,
+        userId: user.userId,
+        type: ['remove_upvote'],
+      });
+    } else if (votes && votes[post.id] === '-') {
+      return votePost({
+        postId: post.id,
+        userId: user.userId,
+        type: ['add_upvote', 'remove_downvote'],
+      });
+    } else {
+      return votePost({
+        postId: post.id,
+        userId: user.userId,
+        type: ['add_upvote'],
+      });
+    }
+  };
+
+  const downVote = () => {
+    dispatch({ type: 'TOGGLE_DOWNVOTE', payload: { module: post.moduleCode, post: post.id } });
+    if (votes && votes[post.id] === '-') {
+      return votePost({
+        postId: post.id,
+        userId: user.userId,
+        type: ['remove_downvote'],
+      });
+    } else if (votes && votes[post.id] === '+') {
+      return votePost({
+        postId: post.id,
+        userId: user.userId,
+        type: ['add_downvote', 'remove_upvote'],
+      });
+    } else {
+      return votePost({
+        postId: post.id,
+        userId: user.userId,
+        type: ['add_downvote'],
+      });
+    }
+  };
 
   return (
     <div className="w-full px-4 py-6 shadow-post rounded-xl bg-forum-postCard">
@@ -39,12 +90,35 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
             <Tag name={tag} key={tag} />
           ))}
         </div>
-        <div className="flex flex-row items-center gap-1">
-          <MdThumbUp className="text-blue-500 cursor-pointer" />
-          {post.upvotes}
-          <div className="w-2" />
-          <MdThumbDown className="text-red-500 cursor-pointer" />
-          {post.downvotes}
+        <div className="flex flex-row items-center gap-3">
+          <div
+            className={`p-1 flex flex-row items-center cursor-pointer rounded-lg ${
+              votes[post.id] === '+' ? ' border-2' : ''
+            }`}
+            onClick={() =>
+              upVote().catch((err) => {
+                console.log(err);
+                toast.error('Please login to vote');
+              })
+            }
+          >
+            <MdThumbUp className="mr-1 text-blue-500" />
+            {post.upvotes}
+          </div>
+          <div
+            className={`p-1 flex flex-row items-center cursor-pointer rounded-lg ${
+              votes[post.id] === '-' ? ' border-2' : ''
+            }`}
+            onClick={() =>
+              downVote().catch((err) => {
+                console.log(err);
+                toast.error('Please login to vote');
+              })
+            }
+          >
+            <MdThumbDown className="mr-1 text-red-500" />
+            {post.downvotes}
+          </div>
         </div>
       </div>
 

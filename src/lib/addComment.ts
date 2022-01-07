@@ -4,7 +4,6 @@ import { User } from '../store/user/type';
 
 export const addComment = async ({ comment, postId, user }: { comment: string; postId: string; user: User }) => {
   return runTransaction(db, async (transaction) => {
-
     const postRef = doc(db, 'posts', String(postId));
     const postDoc = await transaction.get(postRef);
     if (!postDoc.exists()) {
@@ -23,9 +22,8 @@ export const addComment = async ({ comment, postId, user }: { comment: string; p
       downvotes: 0,
       creationDate: Timestamp.fromDate(new Date()),
     };
-    console.log(newComment);
 
-    transaction.update(postRef, { comments: [newComment, ...comments] });
+    transaction.update(postRef, { comments: [...comments, newComment] });
 
     return newCommentId;
   });

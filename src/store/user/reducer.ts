@@ -24,7 +24,6 @@ const getAnonymousDetails = () => {
 
 const getInitialState = (): User => {
   const anon = getAnonymousDetails();
-  // const votes =
 
   return {
     name: '',
@@ -32,7 +31,6 @@ const getInitialState = (): User => {
     image: anon.image,
     isAdmin: false,
     anonymousName: anon.name,
-    votes: {},
   };
 };
 

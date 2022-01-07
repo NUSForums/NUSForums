@@ -4,6 +4,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Button from './Button';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import { addComment } from '../../lib/addComment';
+import { toast } from 'react-toastify';
 
 const CommentEditor = ({ setShowEditor, postId }) => {
   const commentRef = useRef();
@@ -23,7 +24,14 @@ const CommentEditor = ({ setShowEditor, postId }) => {
       comment: removeHTML(commentRef.current),
       postId,
       user,
-    });
+    })
+      .catch((err) => {
+        console.log(err);
+        toast.error('Please login to comment');
+      })
+      .finally(() => {
+        setShowEditor(false);
+      });
   };
 
   return (

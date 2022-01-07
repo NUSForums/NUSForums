@@ -6,6 +6,7 @@ import { useAppSelector } from '../../hooks/reduxHooks';
 import { tagConvert } from '../Tag';
 import { useParams } from 'react-router-dom';
 import { createPost } from '../../lib/createPost';
+import { toast } from 'react-toastify';
 /*
 ['Essentials', 'CKFinderUploadAdapter', 'Autoformat', 'Bold', 'Italic', 
 'BlockQuote', 'CKFinder', 'CloudServices', 'EasyImage', 'Heading', 'Image', 'ImageCaption', 
@@ -67,7 +68,14 @@ const RichTextEditor = ({ setShowEditor }) => {
       tags: tags,
       moduleCode: module || '',
       user,
-    });
+    })
+      .catch((err) => {
+        console.log(err);
+        toast.error('Please login to post');
+      })
+      .finally(() => {
+        setShowEditor(false);
+      });
   };
 
   const onToggleTag = (tagName) => {
