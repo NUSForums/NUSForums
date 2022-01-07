@@ -12,7 +12,7 @@ const UserInfo: React.FC<AvatarProps> = ({ className }) => {
   return (
     <div className={`h-full my-auto ml-auto flex flex-row items-center ${className}`}>
       <img
-        className="w-10 h-10 p-1 bg-white rounded-full"
+        className="w-12 p-1 bg-white rounded-full"
         alt="profile"
         src={image || `https://avatars.dicebear.com/api/gridy/${anonymousName.replaceAll(' ', '')}.svg`}
       />
