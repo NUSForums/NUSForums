@@ -14,9 +14,8 @@ const Sidebar = () => {
 
   return (
     <div className="w-64 h-screen bg-forum-sidebar">
-      <div className="grid py-5 m-auto my-3 place-items-center">hello world</div>
-      <div className="w-full" style={{ background: '#2a3542', height: '1.5px' }} />
-      <p className="px-5 pt-5 my-2 text-xs font-bold text-forum-sidebarTitle font-poppins">Modules</p>
+      <div className="grid py-4 m-auto my-3 place-items-center">hello world</div>
+      <p className="px-5 pt-5 my-2 text-lg font-bold text-gray-50 font-poppins">Modules</p>
       <div className="w-full">
         {pins.map((code: string, index: number) => (
           <SideBarRow code={code} key={index} index={index} />
