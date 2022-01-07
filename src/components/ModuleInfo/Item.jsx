@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Item = ({ heading, section }) => {
+const Item = ({ heading, content }) => {
   return (
-    <>
-      <b>{heading}</b>
-      <p>{section}</p>
-    </>
+    <div className="my-3">
+      <p className="font-semibold text-forum-title">{heading}</p>
+      <p>{content}</p>
+    </div>
   );
 };
 

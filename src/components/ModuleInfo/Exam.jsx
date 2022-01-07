@@ -7,15 +7,27 @@ function getDateDiff(date) {
   return Math.round(timeDiff / (1000 * 60 * 60 * 24));
 }
 
+function getDateDisplay(date) {
+  const dateObj = new Date(date);
+  const dateOptions = {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  };
+  return dateObj.toLocaleDateString('en-US', dateOptions);
+}
+
 const Exam = ({ date }) => {
   const dateFromExam = date === undefined ? '' : getDateDiff(date);
+  const dateDisplay = getDateDisplay(date);
+
   return (
     <>
-      <div className="flex">
-        <b>Exam</b>
+      <div className="flex font-semibold text-forum-title">
+        <p className="mr-1">Exam</p>
         {dateFromExam > 0 && <p>{`(in ${dateFromExam} days)`}</p>}
       </div>
-      <p>{date}</p>
+      <p>{dateDisplay}</p>
     </>
   );
 };

@@ -5,6 +5,7 @@ import Item from './Item';
 import { NUSMOD_API } from '../../config/constants';
 import { NUSModules } from '../../types/modules';
 import Exam from './Exam';
+import Information from './Information';
 
 type Props = {
   moduleCode?: String;
@@ -468,10 +469,10 @@ const ModuleInfo = ({ moduleCode }: Props) => {
   }, [acadYear, moduleCode]);
 
   return (
-    <div className="w-1/5 ">
-      <h1>Module Information</h1>
-      <Item heading="Prerequisite" section={moduleInfo?.prerequisite} />
-      <Item heading="Preclusion" section={moduleInfo?.preclusion} />
+    <div className="w-1/5 p-5 m-5 bg-white rounded-lg">
+      <Information content={moduleInfo?.description} />
+      <Item heading="Prerequisite" content={moduleInfo?.prerequisite} />
+      <Item heading="Preclusion" content={moduleInfo?.preclusion} />
       {examDate && <Exam date={examDate} />}
     </div>
   );
