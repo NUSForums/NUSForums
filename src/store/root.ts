@@ -6,12 +6,14 @@ import modulesReducer from './modules/reducer';
 import userReducer from './user/reducer';
 import metaReducer from './metadata/reducer';
 import pinsReducer from './pins/reducer';
+import searchReducer from './search/reducer';
 
 const RootReducer = combineReducers({
   metadata: metaReducer,
   modules: modulesReducer,
   user: userReducer,
   pins: pinsReducer,
+  search: searchReducer
 });
 
 const store = createStore(RootReducer, composeWithDevTools(applyMiddleware(thunk)));

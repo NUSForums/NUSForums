@@ -13,10 +13,10 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div className="w-200 bg-forum-sidebar h-screen">
-      <div className="my-3 m-auto grid place-items-center py-5">hello world</div>
+    <div className="h-screen w-200 bg-forum-sidebar">
+      <div className="grid py-5 m-auto my-3 place-items-center">hello world</div>
       <div className="w-full" style={{ background: '#2a3542', height: '1.5px' }} />
-      <p className="text-forum-sidebarTitle my-2 font-poppins font-bold px-5 text-xs pt-5">Modules</p>
+      <p className="px-5 pt-5 my-2 text-xs font-bold text-forum-sidebarTitle font-poppins">Modules</p>
       <div>
         {pins.map((code: string, index: number) => (
           <SideBarRow code={code} key={code} index={index} />

@@ -7,7 +7,7 @@ import { NUSModules } from '../../types/modules';
 import Exam from './Exam';
 
 type Props = {
-  moduleCode: String;
+  moduleCode?: String;
 };
 
 const defaultData: NUSModules = {
@@ -460,7 +460,7 @@ const ModuleInfo = ({ moduleCode }: Props) => {
   const examDate = moduleInfo?.semesterData[parseInt(semester) - 1]?.examDate;
 
   useEffect(() => {
-    if (canFetch) {
+    if (canFetch && !!moduleCode) {
       axios.get(`${NUSMOD_API}/${acadYear}/modules/${moduleCode}.json`).then((res) => {
         setModuleInfo(res.data);
       });
@@ -468,7 +468,7 @@ const ModuleInfo = ({ moduleCode }: Props) => {
   }, [acadYear, moduleCode]);
 
   return (
-    <div>
+    <div className="w-1/5 ">
       <h1>Module Information</h1>
       <Item heading="Prerequisite" section={moduleInfo?.prerequisite} />
       <Item heading="Preclusion" section={moduleInfo?.preclusion} />

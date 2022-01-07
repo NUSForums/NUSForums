@@ -7,15 +7,17 @@ import { auth, db } from './config/firebase';
 import LandingPage from './pages/LandingPage';
 import Forum from './pages/Forum';
 import ModuleForum from './components/ModuleForum';
-import { doc, onSnapshot } from 'firebase/firestore';
+import { doc, getDoc, onSnapshot } from 'firebase/firestore';
 import { MetaData } from './store/metadata/type';
 import { useAppDispatch, useAppSelector } from './hooks/reduxHooks';
 import axios from 'axios';
 import { NUSMOD_API } from './config/constants';
 import { ModuleCondensed } from './types/modules';
 import { toast } from 'react-toastify';
+import { User } from './store/user/type';
 
 const MainRouter = () => {
+  const [initComplete, setInitComplete] = useState(false);
   const dispatch = useAppDispatch();
   const acadYear = useAppSelector((state) => state.metadata.acadYear);
 
@@ -46,25 +48,23 @@ const MainRouter = () => {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       // TODO: when user log in later!
-      // if (!!user) {
-      //   const uid = user.uid;
-      //   getDoc(doc(db, 'users', uid)).then((res) => {
-      //     if (res.data() && res.data()?.firstName) {
-      //       userDispatch({ type: 'UPDATE_PROFILE', payload: res.data() as Partial<UserState> });
-      //       userDispatch({ type: 'VERIFYING', payload: false });
-      //     }
-      //     userDispatch({ type: 'UPDATE_USER_ID', payload: uid });
-      //     setInitComplete(true);
-      //   });
-      // } else {
-      //   userDispatch({ type: 'SIGN_OUT' });
-      //   setInitComplete(true);
-      // }
+      if (!!user) {
+        const uid = user.uid;
+        getDoc(doc(db, 'users', uid)).then((res) => {
+          if (res.data()) {
+            dispatch({ type: 'UPDATE_PROFILE', payload: res.data() as User });
+          }
+          setInitComplete(true);
+        });
+      } else {
+        dispatch({ type: 'SIGN_OUT' });
+        setInitComplete(true);
+      }
     });
   }, []);
 
   // TODO: change it later
-  if (true) {
+  if (initComplete) {
     return (
       <Router>
         <Routes>
