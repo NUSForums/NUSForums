@@ -24,9 +24,7 @@ export const createPost = async ({
     }
 
     const newId = metaDoc.data().counter + 1;
-    console.log(newId);
     const moduleRef = doc(db, 'posts', String(newId));
-    console.log(moduleRef);
     const newPost = {
       title: title,
       body: body,
@@ -41,11 +39,9 @@ export const createPost = async ({
       userName: user.anonymousName,
       userId: user.userId,
     };
-    console.log(newPost);
 
     transaction.update(metadataRef, { counter: newId });
     transaction.set(moduleRef, newPost);
-    console.log(newPost);
 
     return newId;
   });

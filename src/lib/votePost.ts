@@ -1,5 +1,6 @@
 import { doc, runTransaction } from 'firebase/firestore';
 import { db } from '../config/firebase';
+import { Post } from '../types/posts';
 
 export const votePost = async ({
   postId,
@@ -22,21 +23,21 @@ export const votePost = async ({
     // console.log(newId);
     const postRef = doc(db, 'posts', postId);
     const metaDoc = await transaction.get(postRef);
-    const data = metaDoc.data() as any;
+    const data = metaDoc.data() as Post;
 
     let changes = {};
     switch (type) {
       case 'add_downvote':
-        changes = { downvote: data.downvote + 1 };
+        changes = { downvotes: data.downvotes + 1 };
         break;
       case 'add_upvote':
-        changes = { upvote: data.upvote + 1 };
+        changes = { upvotes: data.upvotes + 1 };
         break;
       case 'remove_downvote':
-        changes = { downvote: data.downvote - 1 };
+        changes = { downvotes: data.downvotes - 1 };
         break;
       case 'remove_upvote':
-        changes = { upvote: data.upvote - 1 };
+        changes = { upvotes: data.upvotes - 1 };
         break;
     }
     transaction.update(postRef, changes);
