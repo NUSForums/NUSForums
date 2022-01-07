@@ -1,14 +1,15 @@
 import { IoTrash } from 'react-icons/io5';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../hooks/reduxHooks';
 
 import Tag from '../Tag';
 import Dropdown from './Dropdown';
 
-const tagList = ['General', 'Midterms', 'Finals', 'Labs', 'Tutorials', 'Lectures'] as const;
-
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const metadata = useAppSelector((state) => state.metadata);
+  const tagList = metadata.tags;
 
   const clearFilter = () => {
     const queryParams = new URLSearchParams(location.search);
