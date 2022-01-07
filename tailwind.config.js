@@ -40,6 +40,8 @@ module.exports = {
         createPost: '#525F7F',
         readMore: '#3F4348',
         sidebarText: '#C4CBD1',
+        postCard: '#FCFCFC',
+        subText: '#787E8B',
       },
     },
     spacing: {
@@ -170,6 +172,7 @@ module.exports = {
       yellow: '0 9px 10px -1px rgba(255, 201, 28, 0.25), 0 4px 6px 1px rgba(255, 201, 28, 0.15)',
       red: '0 9px 10px -1px rgba(255, 62, 48, 0.25), 0 4px 6px 1px rgba(255, 62, 48, 0.15)',
       orange: '0 9px 10px -1px rgba(255, 156, 68, 0.25), 0 4px 6px 1px rgba(255, 156, 68, 0.15)',
+      post: '0px 4px 4px rgba(0, 0, 0, 0.25)',
     },
     contrast: {
       0: '0',

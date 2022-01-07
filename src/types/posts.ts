@@ -15,9 +15,11 @@ type Post = {
 
 type Comment = {
   userId: string;
+  userName: string;
   comment: string;
   upvotes: number;
   downvotes: number;
+  creationDate: Date;
 };
 
 export type { Post, Comment };
