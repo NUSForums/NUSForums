@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import Button from './Button';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import { tagConvert } from '../Tag';
@@ -92,7 +92,7 @@ const RichTextEditor = ({ setShowEditor }) => {
     <div>
       <div className="pb-1 font-semibold ">Post Title</div>
       <CKEditor
-        editor={ClassicEditor}
+        editor={Editor}
         config={{ toolbar: [] }}
         data="Your title here"
         onChange={(event, editor) => {
@@ -102,7 +102,7 @@ const RichTextEditor = ({ setShowEditor }) => {
       />
       <div className="pt-5 pb-1 font-semibold">Post Subject</div>
       <CKEditor
-        editor={ClassicEditor}
+        editor={Editor}
         config={editorConfiguration}
         data="<p>Write your post here</p>"
         onReady={(editor) => {

@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import Button from './Button';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import { addComment } from '../../lib/addComment';
@@ -41,7 +41,7 @@ const CommentEditor = ({ setShowEditor, postId }) => {
           <div className="pb-1 text-sm font-semibold">{user.anonymousName}</div>
 
           <CKEditor
-            editor={ClassicEditor}
+            editor={Editor}
             config={{ toolbar: [] }}
             data=""
             onChange={(event, editor) => {
