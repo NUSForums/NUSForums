@@ -243,6 +243,7 @@ module.exports = {
       DEFAULT: '1',
     },
     fontFamily: {
+      nunito: ['nunito'],
       lato: ['lato'],
       poppins: 'Poppins',
       sans: [
@@ -812,6 +813,9 @@ module.exports = {
       min: 'min-content',
       max: 'max-content',
       '10px': '10px',
+      200: '200px',
+      10: '10px',
+      28: '7rem',
     }),
     zIndex: {
       auto: 'auto',
