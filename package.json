@@ -53,8 +53,8 @@
     "build:css": "cross-env TAILWIND_MODE=build NODE_ENV=production postcss src/styles/tailwind.css -o src/styles/index.css",
     "watch:css": "cross-env TAILWIND_MODE=watch NODE_ENV=development postcss src/styles/tailwind.css -o src/styles/index.css --watch",
     "react-scripts:start": "delay 5 && react-scripts start",
-    "react-scripts:build": "react-scripts --max_old_space_size=4096 build",
-    "clean": "rm -rf node_modules && rm yarn.lock && yarn"
+    "react-scripts:build": "react-scripts --max_old_space_size=6144 build",
+    "clean": "rm -rf node_modules && rm yarn.lock"
   },
   "eslintConfig": {
     "extends": "react-app"
