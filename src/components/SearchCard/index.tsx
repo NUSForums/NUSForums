@@ -14,7 +14,6 @@ export const SearchCard: React.FC<SearchCardProps> = ({ moduleCode, title }) => 
     <button
       className="flex flex-row items-center w-full py-2 mt-3 bg-gray-200 rounded-lg"
       onClick={() => {
-        console.log(moduleCode);
         navigate(`/forum/${moduleCode}`);
         dispatch({ type: 'CLEAR_SEARCH' });
       }}

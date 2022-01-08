@@ -1,13 +1,15 @@
 import { Post } from '../../types/posts';
 import moment from 'moment';
 import { useMemo } from 'react';
-import ShowMoreText from 'react-show-more-text';
 import Tag from '../Tag';
 import { MdThumbUp, MdThumbDown } from 'react-icons/md';
 import AddComment from './AddComment';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { votePost } from '../../lib/votePost';
 import { toast } from 'react-toastify';
+import ReactMarkdown from 'react-markdown';
+import rehypeSanitize from 'rehype-sanitize';
+import MDEditor from '@uiw/react-md-editor';
 
 interface PostCardProps {
   post: Post;
@@ -72,17 +74,9 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
         <div className="ml-auto">#{post.id}</div>
       </div>
 
-      <ShowMoreText
-        /* Default options */
-        // lines={5}
-        more={<p className="text-sm font-semibold text-gray-700 underline">Show more</p>}
-        less={<p className="text-sm font-semibold text-gray-700 underline">Show less</p>}
-        keepNewLines={true}
-        className="text-base text-gray-900"
-        truncatedEndingComponent={'... '}
-      >
-        {post.body}
-      </ShowMoreText>
+      <div>
+        <MDEditor.Markdown source={post.body} rehypePlugins={[[rehypeSanitize]]} />
+      </div>
 
       <div className="flex flex-row justify-between">
         <div className="flex items-center">

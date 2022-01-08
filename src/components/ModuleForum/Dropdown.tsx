@@ -37,7 +37,14 @@ const Dropdown = () => {
     <Box sx={{ minWidth: 120 }} className="mr-5">
       <FormControl fullWidth>
         <InputLabel id="drop down">Sort by</InputLabel>
-        <Select labelId="drop down" id="demo-simple-select" value={filter} label="Sort by" onChange={handleChange}>
+        <Select
+          labelId="drop down"
+          id="demo-simple-select"
+          variant="standard"
+          value={filter}
+          label="Sort by"
+          onChange={handleChange}
+        >
           <MenuItem value="recent">Recent</MenuItem>
           <MenuItem value="popular">Popular</MenuItem>
         </Select>

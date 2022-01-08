@@ -21,6 +21,23 @@ const getAnonymousDetails = () => {
     // votes: votes,
   };
 };
+const generateRandomName = () => {
+  const name = uniqueNamesGenerator({
+    dictionaries: [['Anonymous'], animals],
+    length: 2,
+    separator: ' ',
+    style: 'capital',
+  });
+  localStorage.setItem('name', name);
+
+  // const votes = localStorage.getVotes('votes') || {};
+  // localStorage.setItem('votes', votes);
+  return {
+    image: `https://avatars.dicebear.com/api/gridy/${name?.replaceAll(' ', '')}.svg`,
+    name: name,
+    // votes: votes,
+  };
+};
 
 const getInitialState = (): User => {
   const anon = getAnonymousDetails();
@@ -36,7 +53,8 @@ const getInitialState = (): User => {
 
 type UserPayload = {
   ['UPDATE_PROFILE']: Partial<User>;
-  ['CHANGE_ANONYMOUS_NAME']: string;
+  ['RANDOMIZE_NAME']: undefined;
+  ['SIGN_IN']: string;
   ['SIGN_OUT']: undefined;
 };
 
@@ -44,15 +62,22 @@ type UserActions = ActionMap<UserPayload>[keyof ActionMap<UserPayload>];
 
 const userReducer = (prevState: User = getInitialState(), action: UserActions): User => {
   switch (action.type) {
+    case 'SIGN_IN':
+      return {
+        ...prevState,
+        userId: action.payload,
+      };
     case 'UPDATE_PROFILE':
       return {
         ...prevState,
         ...action.payload,
       };
-    case 'CHANGE_ANONYMOUS_NAME':
+    case 'RANDOMIZE_NAME':
+      const { name, image } = generateRandomName();
       return {
         ...prevState,
-        anonymousName: action.payload,
+        anonymousName: name,
+        image: image,
       };
     case 'SIGN_OUT':
       return {

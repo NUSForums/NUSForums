@@ -20,7 +20,6 @@ type VotePayload = {
 type VoteActions = ActionMap<VotePayload>[keyof ActionMap<VotePayload>];
 
 const voteReducer = (prevState: Votes = getInitialState(), action: VoteActions): Votes => {
-  console.log(prevState, action);
   switch (action.type) {
     case 'TOGGLE_UPVOTE':
       let { module, post } = action.payload;
@@ -34,7 +33,6 @@ const voteReducer = (prevState: Votes = getInitialState(), action: VoteActions):
           },
         };
       } else {
-        console.log(prevState[module][post]);
         return {
           ...prevState,
           [module]: {

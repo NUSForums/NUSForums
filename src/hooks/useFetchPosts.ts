@@ -31,7 +31,6 @@ export const useFetchPosts = (moduleCode: string, filter?: string | null, sort?:
           }) || [];
 
         posts.push(data as Post);
-        console.log(data);
       });
       setPosts(posts);
     });

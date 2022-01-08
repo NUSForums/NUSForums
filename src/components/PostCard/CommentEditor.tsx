@@ -1,25 +1,27 @@
 import { useRef } from 'react';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import Button from './Button';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import { addComment } from '../../lib/addComment';
 import { toast } from 'react-toastify';
 
-const CommentEditor = ({ setShowEditor, postId }) => {
-  const commentRef = useRef();
+const CommentEditor = ({ setShowEditor, postId }: { setShowEditor: (val: boolean) => any; postId: string }) => {
+  const commentRef = useRef<string>();
   const { user } = useAppSelector((state) => ({
     user: state.user,
   }));
 
-  function removeHTML(str) {
+  function removeHTML(str: string) {
     var tmp = document.createElement('DIV');
     tmp.innerHTML = str;
     return tmp.textContent || tmp.innerText || '';
   }
 
   const onSubmit = () => {
-    console.log(commentRef.current);
+    if (!commentRef.current) {
+      toast.error('Cannot make an empty comment');
+      return;
+    }
+
     return addComment({
       comment: removeHTML(commentRef.current),
       postId,
@@ -39,14 +41,12 @@ const CommentEditor = ({ setShowEditor, postId }) => {
       <div className="flex flex-row">
         <div className={`px-4 py-3 w-full bg-forum-postCard shadow-md rounded-xl text-sm text-justify`}>
           <div className="pb-1 text-sm font-semibold">{user.anonymousName}</div>
-
-          <CKEditor
-            editor={Editor}
-            config={{ toolbar: [] }}
-            data=""
-            onChange={(event, editor) => {
-              const data = editor.getData();
-              commentRef.current = data;
+          <textarea
+            rows={1}
+            className="w-full p-1"
+            placeholder="Enter your comment..."
+            onChange={(e) => {
+              commentRef.current = e.target.value;
             }}
           />
         </div>

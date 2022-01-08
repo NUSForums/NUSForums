@@ -48,14 +48,11 @@ const MainRouter = () => {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       // TODO: when user log in later!
+      console.log('auth changed');
       if (!!user) {
         const uid = user.uid;
-        getDoc(doc(db, 'users', uid)).then((res) => {
-          if (res.data()) {
-            dispatch({ type: 'UPDATE_PROFILE', payload: res.data() as User });
-          }
-          setInitComplete(true);
-        });
+        dispatch({ type: 'SIGN_IN', payload: uid });
+        setInitComplete(true);
       } else {
         dispatch({ type: 'SIGN_OUT' });
         setInitComplete(true);
