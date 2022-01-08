@@ -3,6 +3,7 @@ import { auth } from '../config/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import LOGO from '../images/NUSForums.svg';
+import appLogo from '../images/library-svgrepo-com.svg';
 import { useAppSelector } from '../hooks/reduxHooks';
 
 const LandingPage = () => {
@@ -31,6 +32,7 @@ const LandingPage = () => {
 
   return (
     <div className="grid w-full h-full pb-16 place-content-center">
+      <img src={appLogo} alt="logo" className="mb-2 mx-auto" width={200} height="auto" />
       <img src={LOGO} alt="logo" className="mb-6" />
       <div
         className="grid h-10 border border-gray-300 rounded-lg cursor-pointer font-poppins text-forum-midterms place-content-center hover:text-white hover:bg-forum-midterms"
