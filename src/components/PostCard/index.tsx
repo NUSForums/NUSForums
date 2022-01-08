@@ -7,7 +7,6 @@ import AddComment from './AddComment';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { votePost } from '../../lib/votePost';
 import { toast } from 'react-toastify';
-import ReactMarkdown from 'react-markdown';
 import rehypeSanitize from 'rehype-sanitize';
 import MDEditor from '@uiw/react-md-editor';
 
